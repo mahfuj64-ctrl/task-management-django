@@ -11,3 +11,6 @@ def contact(request):
 
 def show_task(request):
         return HttpResponse("<h1 style='color: red'> This is our task page</h1>")
+
+def dashboard(request,id):
+        return HttpResponse("THis is home dashbosrd")
