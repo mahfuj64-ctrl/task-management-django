@@ -1,19 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
+# Create your views he
 
-def home(request):
-        return render(request, "home.html")
+def manager_dashboard(request):
+    return render(request, 'dashboard.html')
 
-def contact(request):
-        return HttpResponse("<h1 style='color: blue'> This is contact page</h1>")
-
-def show_task(request):
-        return HttpResponse("<h1 style='color: red'> This is our task page</h1>")
-
-def show_specific_task(request,id):
-        print('id',id)
-        print('id type', type(id))
-        return HttpResponse(f"This is specific task page{id}")
-
+def user_dashboard(request):
+    return render(request, 'user_dashboard.html')
