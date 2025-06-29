@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,10 +8,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %}{% endblock title %}</title>
     <!-- ✅ Tailwind CDN Link -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/output.css' %}">
     <style>
         body {
             font-family: "inter", sans-serif;
@@ -33,6 +35,10 @@
                 <button class="w-10 h-10 bg-blue-500 rounded-full text-white 
                     font-bold items-center justify-center">B</button>
             </div>
+        
+        
+        
+        
         </header>
         <main>
             {% comment %} Stats Grid  {% endcomment %}
@@ -110,7 +116,6 @@
 
         </main>
     </div>
-    {% include "footer.html" %}
 </body>
 
 </html>
