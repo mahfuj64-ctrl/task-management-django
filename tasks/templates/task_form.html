@@ -1,0 +1,68 @@
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Form</title>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+  </head>
+  <body class="bg-gray-50 min-h-screen flex items-center justify-center">
+    <div class="w-full max-w-xl bg-white p-8 rounded-lg shadow-md">
+      {% if message %}
+      <p class="bg-green-100 text-green-800 p-2 rounded mb-4 text-center">
+        {{ message }}
+      </p>
+      {% endif %}
+
+      <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button
+          type="submit"
+          class="bg-rose-500 px-4 py-2 text-white mt-4 rounded hover:bg-rose-600 block mx-auto"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
+{% endcomment %} 
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Form</title>
+    <link rel="stylesheet" href="{% static 'css/output.css' %}" />
+  </head>
+
+  <body>
+    <div class="w-1/2 mx-auto mt-8">
+      {% comment %}
+      <h1 class="text-2xl p-2 font-semibold mt-6 text-center items-center">
+        Software Development Project
+      </h1>
+      {% endcomment %}  
+      <div
+        {% if messages %}
+          {% for message in messages %}
+        class="px-2 py-1 {% if message.tags == 'success' %}bg-green-500 {% endif %}">
+        {{message}}
+          {% endfor %}
+        {% endif %}
+      </div>
+      <form method="POST">
+        {% csrf_token %} {{ task_form}} {{ task_detail_form}}
+        <button
+          type="submit"
+          class="mb-10 bg-yellow-500 px-3 py-2 text-blue-600 mt-4 rounded-md">
+          Submit
+        </button>
+      </form>
+    </div>
+  </body>
+</html>
+

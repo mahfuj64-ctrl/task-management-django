@@ -13,28 +13,34 @@
     <div>TEAM</div>
     <div>CREATED AT</div>
   </div>
-  {% comment %} TASK ITEMS-1 {% endcomment %}
   <div>
+    {% for task in tasks %}
+          {% comment %} TASK ITEMS-1 {% endcomment %}
     <div class="grid grid-cols-4 p-4 items-center">
       <div class="flex items-center gap-2">
         <div class="w-2 h-2 bg-green-500 rounded-full"></div>
         <div>
-          <span>Test Low Task</span>
+          <span>{{task.title}}</span>
+          <a href="{% url "update_task" task.id%}" class="px-3 py-2 bg-green-500"> Edit </a>
+          <form action="{% url "delete_task" task.id%}" method='POST'>
+            {% csrf_token %}
+            <button type="submit" class="px-3 py-2 bg-red-600" > Delete </button>
+          </form>
         </div>
       </div>
       <div>
         <span class="bx-3 py-1 rounded-full bg-blue-50 text-blue-600 text-sm"
-          >Low</span
+          >{{task.details.get_priority_display}}</span
         >
       </div>
       <div>
         <div class="flex -space-x-2">
-          <div
-            class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white"
-          >
-            CA
+          {% for emp in task.assigned_to.all %}
+            <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white">
+            {{emp.name|slice:':1'}}
           </div>
-          <div
+          {% endfor %}
+          {% comment %} <div
             class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white"
           >
             JS
@@ -43,15 +49,16 @@
             class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-sm border-2 border-white"
           >
             B
-          </div>
+          </div> {% endcomment %}
         </div>
       </div>
       <div>
-        <span class="text-gray-500">9 months ago</span>
+        <span class="text-gray-500">{{task.created_at|timesince}}</span>
       </div>
     </div>
+    {% endfor %}
     {% comment %} TASK ITEMS-2 {% endcomment %}
-    <div class="grid grid-cols-4 p-4 items-center">
+    {% comment %} <div class="grid grid-cols-4 p-4 items-center">
       <div class="flex items-center gap-2">
         <div class="w-2 h-2 bg-yellow-500 rounded-full"></div>
         <div>
@@ -85,9 +92,9 @@
       <div>
         <span class="text-gray-500">9 months ago</span>
       </div>
-    </div>
+    </div> {% endcomment %}
     {% comment %} TASK ITEMS-3 {% endcomment %}
-    <div class="grid grid-cols-4 p-4 items-center">
+    {% comment %} <div class="grid grid-cols-4 p-4 items-center">
       <div class="flex items-center gap-2">
         <div class="w-2 h-2 bg-red-500 rounded-full"></div>
         <div>
@@ -126,7 +133,7 @@
       <div>
         <span class="text-gray-500">10 months ago</span>
       </div>
-    </div>
+    </div> {% endcomment %}
   </div>
 </div>
 
