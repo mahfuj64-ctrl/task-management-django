@@ -1,8 +1,17 @@
+# from django.contrib import admin
+# from django.urls import path,include
+# from debug_toolbar.toolbar import debug_toolbar_urls
+
+# urlpatterns = [
+#     path('admin/', admin.site.urls),
+#     path("tasks/",include("tasks.urls"))
+# ]+debug_toolbar_urls()
+
 from django.contrib import admin
-from django.urls import path,include
+from django.urls import path, include
 from debug_toolbar.toolbar import debug_toolbar_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("tasks/",include("tasks.urls"))
-]+debug_toolbar_urls()
+    path('', include('tasks.urls')),  # ✅ root path এ tasks app কে include করো
+] + debug_toolbar_urls()

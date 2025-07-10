@@ -101,7 +101,7 @@ DATABASES = {
     )
 }
 
-#For Postgres
+# For Postgres
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
